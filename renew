@@ -1,0 +1,5 @@
+#!/bin/sh
+# Deliberately without extension to avoid cron issues.
+# Sleep random number of seconds up to 1 hour before certificates renewal.
+sleep $(( ( RANDOM % 3600 ) + 1 )) && \
+  certbot renew --webroot --webroot-path /var/lib/certbot --post-hook 'nginx -s reload'
