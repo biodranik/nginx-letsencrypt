@@ -9,6 +9,7 @@ version: "3.8"
 services:
   nginx:
     image: biodranik/nginx-letsencrypt
+    restart: unless-stopped
     environment:
       LETSENCRYPT_EMAIL: YOUR@EMAIL
       TZ: "${TZ:-Europe/Berlin}"  # Set for proper container time.
@@ -17,7 +18,7 @@ services:
       - 8443:443  # Change to your needs.
     volumes:
       - letsencrypt:/etc/letsencrypt
-      - ./YOUR_WWW_WITH_CONFIGS:/var/lib/www
+      - ./YOUR_WWW_WITH_CONFIGS:/var/lib/www:ro
 volumes:
   letsencrypt:
 ```
