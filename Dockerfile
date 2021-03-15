@@ -7,7 +7,7 @@ ENV LETSENCRYPT_EMAIL="${LETSENCRYPT_EMAIL}"
 # Overwrite default nginx configs with ours.
 COPY ./conf/ /etc/nginx/
 # LetsEncrypt/Certbot renew cron script.
-COPY ./renew /etc/periodic/daily/renew
+COPY ./renew_letsencrypt /etc/periodic/daily/
 # Main entry point to launch on container startup.
 COPY ./entrypoint.sh /entrypoint.sh
 

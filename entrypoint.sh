@@ -19,7 +19,7 @@ done
 # Used in HTTP => HTTPS redirect.
 export DOMAINS
 
-# Run cron daemon for automatic Letsencrypt updates (see ./renew script).
+# Run cron daemon for automatic Letsencrypt updates (see ./renew_letsencrypt script).
 /usr/sbin/crond -f -d 8 &
 
 # Run nginx script for env vars substitution (added in nginx image 1.19).
