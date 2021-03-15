@@ -9,7 +9,7 @@ COPY ./conf/ /etc/nginx/
 # LetsEncrypt/Certbot renew cron script.
 COPY ./renew_letsencrypt /etc/periodic/daily/
 # Main entry point to launch on container startup.
-COPY ./entrypoint.sh /entrypoint.sh
+COPY ./letsencrypt-entrypoint.sh /letsencrypt-entrypoint.sh
 
 RUN set -eux && \
   apk -U upgrade && \
@@ -20,4 +20,4 @@ RUN set -eux && \
 
 VOLUME /etc/letsencrypt /var/lib/www
 EXPOSE 80 443
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/letsencrypt-entrypoint.sh"]
